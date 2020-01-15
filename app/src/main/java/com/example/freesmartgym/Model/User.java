@@ -9,20 +9,23 @@ public  class User implements Parcelable {
     private int weight;
     private int age;
     private int fatPercent = 0;
+    private int sex;
 
-    public User(String firstName, int height, int weight, int age, int fatPercent) {
+    public User(String firstName, int height, int weight, int age, int fatPercent, int sex) {
         this.firstName = firstName;
         this.height = height;
         this.weight = weight;
         this.age = age;
         this.fatPercent = fatPercent;
+        this.sex = sex;
     }
 
-    public User(String firstName, int height, int weight, int age) {
+    public User(String firstName, int height, int weight, int age, int sex) {
         this.firstName = firstName;
         this.height = height;
         this.weight = weight;
         this.age = age;
+        this.sex = sex;
     }
 
     public User() {
@@ -34,6 +37,7 @@ public  class User implements Parcelable {
         weight = in.readInt();
         age = in.readInt();
         fatPercent = in.readInt();
+        sex = in.readInt();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -88,6 +92,14 @@ public  class User implements Parcelable {
         this.fatPercent = fatPercent;
     }
 
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
+
     @Override
     public int describeContents() {
         return this.hashCode();
@@ -100,5 +112,6 @@ public  class User implements Parcelable {
         dest.writeInt(weight);
         dest.writeInt(age);
         dest.writeInt(fatPercent);
+        dest.writeInt(sex);
     }
 }

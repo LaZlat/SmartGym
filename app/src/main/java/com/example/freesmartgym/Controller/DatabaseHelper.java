@@ -18,7 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements CommWithDatabase
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + "user_table" + "(id INTEGER PRIMARY KEY AUTOINCREMENT, firstname TEXT, height INTEGER, weight INTEGER, age INTEGER, fatpercent INTEGER)");
+        db.execSQL("CREATE TABLE " + "user_table" + "(id INTEGER PRIMARY KEY AUTOINCREMENT, firstname TEXT, height INTEGER, weight INTEGER, age INTEGER, fatpercent INTEGER, sex INTEGER)");
     }
 
     @Override
@@ -29,9 +29,11 @@ public class DatabaseHelper extends SQLiteOpenHelper implements CommWithDatabase
 
     @Override
     public void writeUserToDatabase(User theUser) {
+
+
         try{
             SQLiteDatabase db = this.getWritableDatabase();
-            String sql = "INSERT INTO user_table (firstname, height, weight, age, fatpercent) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO user_table (firstname, height, weight, age, fatpercent, sex) VALUES (?, ?, ?, ?, ?, ?)";
             SQLiteStatement statement = db.compileStatement(sql);
 
             statement.bindString(1, theUser.getFirstName());
@@ -39,6 +41,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements CommWithDatabase
             statement.bindLong(3,theUser.getWeight());
             statement.bindLong(4, theUser.getAge());
             statement.bindLong(5,theUser.getFatPercent());
+            statement.bindLong(6, theUser.getSex());
 
             long rowID = statement.executeInsert();
             db.close();
@@ -53,10 +56,10 @@ public class DatabaseHelper extends SQLiteOpenHelper implements CommWithDatabase
 
         try {
             SQLiteDatabase db = this.getWritableDatabase();
-            Cursor res = db.rawQuery("SELECT firstname, height, weight, age, fatpercent FROM user_table", null);
+            Cursor res = db.rawQuery("SELECT firstname, height, weight, age, fatpercent, sex FROM user_table", null);
             res.moveToFirst();
             if(res.isFirst()) {
-                theUser = new User(res.getString(0), res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4));
+                theUser = new User(res.getString(0), res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4), res.getInt(5));
                 db.close();
                 return theUser;
             }

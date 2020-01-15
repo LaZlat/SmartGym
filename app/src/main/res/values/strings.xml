@@ -15,4 +15,25 @@
     <string name="next">Next</string>
     <string name="age">Age:</string>
     <string name="optimal">*optimal</string>
+    <string name="about">About,</string>
+    <string name="fat_percent2">Fat Percent:</string>
+    <string name="calc">Calculate</string>
+    <string name="maintenance">Your Maintenance Calories</string>
+    <string name="per_day" >calories per day</string>
+    <string name="per_week">calories per week</string>
+    <string name="activity">Activity:</string>
+    <string name="bmi">Your BMI Score</string>
+    <string name="mmP">Maximum Muscural Potential</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="sex">Sex:</string>
+
+    <string-array name="activities">
+        <item>Basal Metabolic Rate</item>
+        <item>Sedentary</item>
+        <item>Light Exercise</item>
+        <item>Moderate Exercise</item>
+        <item>Heavy Exercise</item>
+        <item>Athlete</item>
+    </string-array>
 </resources>

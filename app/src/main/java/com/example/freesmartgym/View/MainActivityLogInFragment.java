@@ -12,7 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import com.example.freesmartgym.R;
 import com.example.freesmartgym.Model.User;
@@ -33,6 +35,10 @@ public class MainActivityLogInFragment extends Fragment {
     private EditText nameEditText, heightEditText, weightEditText, ageEditText, fatPercentEditText;
     private Button nextButton;
     private User theUser;
+    private Switch sexSwitch;
+
+    private int userSex = 0;
+
 
     public MainActivityLogInFragment() {
         // Required empty public constructor
@@ -70,13 +76,28 @@ public class MainActivityLogInFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main_activity_log_in, container, false);
 
-        nameEditText = view.findViewById(R.id.nameEditText);
-        heightEditText = view.findViewById(R.id.heightEditText);
-        weightEditText = view.findViewById(R.id.weightEditText);
-        ageEditText = view.findViewById(R.id.ageEditText);
-        fatPercentEditText = view.findViewById(R.id.fatPercentEditText);
-        nextButton = view.findViewById(R.id.nextButton);
+
+        nameEditText = view.findViewById(R.id.personalNameEditText);
+        heightEditText = view.findViewById(R.id.personalHeightEditText);
+        weightEditText = view.findViewById(R.id.personalWeightEditText);
+        ageEditText = view.findViewById(R.id.personalAgeEditText);
+        fatPercentEditText = view.findViewById(R.id.personalFatPercentEditText);
+        nextButton = view.findViewById(R.id.calcButton);
+        sexSwitch = view.findViewById(R.id.sexSwitch);
         nameEditText.requestFocus();
+
+        sexSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    userSex = 1;
+                }
+                else{
+                    userSex = 0;
+                }
+            }
+        });
+
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,10 +112,10 @@ public class MainActivityLogInFragment extends Fragment {
                     ageEditText.setError("There was an error with your input");
                 } else{
                     if(fatPercentEditText.getText().toString().trim().length() == 0){
-                        theUser = new User(nameEditText.getText().toString().trim(), Integer.valueOf(heightEditText.getText().toString()),Integer.valueOf(weightEditText.getText().toString()), Integer.valueOf(ageEditText.getText().toString()));
+                        theUser = new User(nameEditText.getText().toString().trim(), Integer.valueOf(heightEditText.getText().toString()),Integer.valueOf(weightEditText.getText().toString()), Integer.valueOf(ageEditText.getText().toString()),userSex);
                         sendBack(theUser);
                     } else{
-                        theUser = new User(nameEditText.getText().toString().trim(), Integer.parseInt(heightEditText.getText().toString().trim()),Integer.parseInt(weightEditText.getText().toString().trim()), Integer.valueOf(ageEditText.getText().toString()), Integer.parseInt(fatPercentEditText.getText().toString().trim()));
+                        theUser = new User(nameEditText.getText().toString().trim(), Integer.parseInt(heightEditText.getText().toString().trim()),Integer.parseInt(weightEditText.getText().toString().trim()), Integer.valueOf(ageEditText.getText().toString()), Integer.parseInt(fatPercentEditText.getText().toString().trim()), userSex);
                         sendBack(theUser);
                     }
                 }

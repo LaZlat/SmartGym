@@ -12,6 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.freesmartgym.CommWithDatabase;
 import com.example.freesmartgym.R;
@@ -23,7 +24,7 @@ import java.util.logging.Logger;
 
 
 
-public class MainActivity extends AppCompatActivity implements MainActivityLogInFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements MainActivityLogInFragment.OnFragmentInteractionListener{
 
     private static final Logger LOGGER = Logger.getLogger( MainActivity.class.getName() );
     SharedPreferences prefs = null;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityLogIn
         fragmentContainer = (FrameLayout) findViewById(R.id.fragment_container);
         diveInTextView = (TextView) findViewById(R.id.diveInTextView);
 
-        prefs = getSharedPreferences("com.example.smartgym", MODE_PRIVATE);
+        t.start();
 
         if(savedInstanceState != null){
             firstScreenTouch = savedInstanceState.getBoolean("first");
@@ -98,6 +99,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityLogIn
         userCommWithDatabase = new UserCommWithDatabase();
         commWithDatabase = userCommWithDatabase;
         commWithDatabase.writeUserToDatabase(theUser);
+
+        Toast.makeText(this,"Almost done, press again!", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -105,4 +108,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityLogIn
         super.onSaveInstanceState(outState);
          outState.putBoolean("first", firstScreenTouch);
     }
+
+    Thread t = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            prefs = getSharedPreferences("com.example.smartgym", MODE_PRIVATE);
+        }
+    });
 }

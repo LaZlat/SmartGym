@@ -2,8 +2,9 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
     tools:context=".View.MainActivityLogInFragment">
 
 
@@ -13,7 +14,7 @@
         android:background="@android:color/transparent">
 
         <EditText
-            android:id="@+id/nameEditText"
+            android:id="@+id/personalNameEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -30,7 +31,7 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
             android:fontFamily="@font/montserrat"
             android:text="@string/name"
             android:textColor="#FFFFFF"
@@ -50,10 +51,10 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/heightEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/personalHeightEditText" />
 
         <EditText
-            android:id="@+id/weightEditText"
+            android:id="@+id/personalWeightEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -75,10 +76,10 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nameEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/personalNameEditText" />
 
         <EditText
-            android:id="@+id/heightEditText"
+            android:id="@+id/personalHeightEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -102,10 +103,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ageEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/personalAgeEditText" />
 
         <EditText
-            android:id="@+id/fatPercentEditText"
+            android:id="@+id/personalFatPercentEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -117,7 +118,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <Button
-            android:id="@+id/nextButton"
+            android:id="@+id/calcButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -128,7 +129,7 @@
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+            app:layout_constraintTop_toBottomOf="@+id/sexSwitch" />
 
         <TextView
             android:id="@+id/textView5"
@@ -139,8 +140,8 @@
             android:text="@string/cm"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/heightEditText"
-            app:layout_constraintTop_toBottomOf="@+id/nameEditText" />
+            app:layout_constraintStart_toEndOf="@+id/personalHeightEditText"
+            app:layout_constraintTop_toBottomOf="@+id/personalNameEditText" />
 
         <TextView
             android:id="@+id/textView8"
@@ -151,7 +152,7 @@
             android:text="@string/kg"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/weightEditText"
+            app:layout_constraintStart_toEndOf="@+id/personalWeightEditText"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
         <TextView
@@ -165,10 +166,10 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/weightEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/personalWeightEditText" />
 
         <EditText
-            android:id="@+id/ageEditText"
+            android:id="@+id/personalAgeEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -187,6 +188,52 @@
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fatPercentEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/personalFatPercentEditText" />
+
+        <Switch
+            android:id="@+id/sexSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:switchMinWidth="56dp"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/male"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toStartOf="@+id/sexSwitch"
+            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="28dp"
+            android:text="@string/female"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toEndOf="@+id/sexSwitch"
+            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/sex"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
