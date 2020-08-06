@@ -1,6 +1,4 @@
 # SmartGym
-Small Android project for myself to help track my progress in gym.
-
-|Still in progress|
+Android app to track the progress and the weight while training.
 
 
